@@ -1,0 +1,5 @@
+cattle_id,breed,weight,age
+101,Angus,500,2
+102,Hereford,450,3
+103,Holstein,600,4
+# You can add more rows with additional cattle data
