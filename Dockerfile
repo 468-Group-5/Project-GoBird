@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 80
 
-CMD [ "python", "gobird.py" ]
+CMD [ "python", "goBird.py" ]
