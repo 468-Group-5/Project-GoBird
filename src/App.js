@@ -23,7 +23,6 @@ function App() {
         <section className="content">
           <h3>Our Services</h3>
           <p>Our team’s goal is to simplify parking on the West Chester University campus for students, faculty, and visitors by developing a web application that directs you to available parking spaces. GoBird is an attendance tracker for cars parked in West Chester University spaces; it will deliver real-time parking availability updates to the user in an easy-to-use interface. The user will have a clear image of what areas have availability, what areas do not, while using familiar mapping to get there.</p> 
-
           <p>As users enter a parking area, they will be logged in our system – as they leave, they will be logged out. Using data crowdsourced from each user we can offer near real-time updates to each user on where they can or cannot park while also displaying this information on the Google Maps interface the users are familiar with. </p>
         </section>
       </main>
