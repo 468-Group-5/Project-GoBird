@@ -1,1 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gobird
+  labels:
+    app: gobird
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gobird
+  template:
+    metadata:
+      labels:
+        app: gobird
+    spec:
+      containers:
+      - name: gobird
+        image: docker address for image here
+        ports:
+        - containerPort: 8080
 
