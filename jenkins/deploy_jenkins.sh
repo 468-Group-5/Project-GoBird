@@ -9,3 +9,4 @@ export KUBEHEAD=$(kubectl get nodes -o custom-columns=NAME:.status.addresses[1].
 cp /local/repository/jenkins/values.yaml .
 sed -i "s/KUBEHEAD/${KUBEHEAD}/g" values.yaml
 helm install jenkins jenkins/jenkins -f values.yaml 
+
