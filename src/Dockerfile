@@ -1,7 +1,7 @@
 FROM node:latest
 
 RUN npm install express
-RUN npm install reactJS
+RUN npm install react
 
 COPY files/ /files/
 COPY webui.js /
