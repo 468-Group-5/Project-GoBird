@@ -1,6 +1,5 @@
 FROM node:latest
 
-RUN npm install express
 RUN npm install react
 
 COPY /src/ /app.js /
