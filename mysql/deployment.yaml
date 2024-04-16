@@ -19,7 +19,7 @@ spec:
         image: lxphung/mysql:latest
         env:
         - name: MYSQL_RANDOM_ROOT_PASSWORD
-          value: " "
+          value: strong_password
         resources:
           requests:
             cpu: 10m
