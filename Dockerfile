@@ -13,7 +13,7 @@ CMD [ "npm", "start" ]  # Start command for React app (modify if needed)
 
 # Database (MySQL)
 WORKDIR /app/db 
-COPY your_mysql_image:latest .  # Replace with your MySQL image
+COPY lxphung/mysql:latest .  # Replace with your MySQL image
 EXPOSE 3306  # Standard MySQL port
 CMD [ "docker-entrypoint.sh", "mysqld" ]  # Default MySQL entrypoint
 
