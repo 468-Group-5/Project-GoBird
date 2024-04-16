@@ -19,7 +19,7 @@ CMD [ "docker-entrypoint.sh", "mysqld" ]  # Default MySQL entrypoint
 
 # Backend (Python)
 WORKDIR /app/backend
-COPY your_backend_image:latest .  # Replace with your Python backend image
+COPY bxdda/go_bird:latest .  # Replace with your Python backend image
 EXPOSE your_backend_port  # Replace with your backend port
 CMD [ "python", "your_backend_script.py" ]  # Replace with your Python script
 
