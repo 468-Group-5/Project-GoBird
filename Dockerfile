@@ -20,8 +20,8 @@ CMD [ "docker-entrypoint.sh", "mysqld" ]  # Default MySQL entrypoint
 # Backend (Python)
 WORKDIR /app/backend
 COPY bxdda/go_bird:latest .  # Replace with your Python backend image
-EXPOSE your_backend_port  # Replace with your backend port
-CMD [ "python", "your_backend_script.py" ]  # Replace with your Python script
+EXPOSE 8080  # Backend worker port, we have many options for what node we want to expose for the worker, may need to be modified later
+CMD [ "python", "gobird.py" ]  # Replace with your Python script
 
 # Final note:
 # This is a basic example. You might need additional configurations 
