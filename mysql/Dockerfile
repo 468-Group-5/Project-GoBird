@@ -1,9 +1,5 @@
 FROM mysql/mysql-server:latest
-FROM python:latest
 
-WORKDIR /app
-COPY myScr.py
-COPY cattle_data.csv /docker-entrypoint-initdb.d/cattle_data.csv
+ENV MYSQL_ROOT_PASSWORD=strong_password
 
-CMD ["python", "myScr.py"]
-EXPOSE 3306
+COPY ./database.sql /docker-entrypoint-initdb.d/
