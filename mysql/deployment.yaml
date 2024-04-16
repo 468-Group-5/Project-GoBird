@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: colesny/mysql
+        image: lxphung/mysql:latest
         env:
         - name: MYSQL_RANDOM_ROOT_PASSWORD
           value: " "
