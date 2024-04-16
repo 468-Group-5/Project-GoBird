@@ -1,7 +1,10 @@
 FROM node:latest
 
-RUN npm install react
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
 
-COPY /src/ /app.js /
-CMD ["node", "/app.js"]
+
+COPY /src/ /api.js /
+CMD ["npm", "run", "dev"]
 EXPOSE 3000
