@@ -22,6 +22,8 @@ spec:
           value: strong_password
         - name: MYSQL_ROOT_HOST
           value: 172.17.0.1
+        ports:
+        - containerPort: 3306
         resources:
           requests:
             cpu: 10m
