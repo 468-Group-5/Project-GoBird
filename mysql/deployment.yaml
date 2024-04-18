@@ -20,6 +20,8 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: strong_password
+        - name: MYSQL_ROOT_HOST
+          value: 172.17.0.1
         resources:
           requests:
             cpu: 10m
