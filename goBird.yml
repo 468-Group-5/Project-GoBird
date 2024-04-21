@@ -16,7 +16,18 @@ spec:
     spec:
       containers:
       - name: gobird
-        image: docker address for image here
+        image: bxdda/gobird:latest
         ports:
         - containerPort: 8080
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gobird
+spec:
+  selector:
+    app: gobird
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
