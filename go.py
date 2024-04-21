@@ -1,4 +1,11 @@
 import mysql.connector
+import signal
+import sys
+
+# Function to handle SIGTERM and SIGINT signals
+def signal_handler(sig, frame):
+    print("Received signal {}. Exiting...".format(sig))
+    sys.exit(0)
 
 # Configure MySQL connection
 mysql_host = "mysql"  # Use the service name for MySQL within Kubernetes
@@ -31,3 +38,11 @@ for row in result:
 # Close the cursor and database connection
 cursor.close()
 db.close()
+
+# Register signal handler for SIGTERM and SIGINT
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
+
+# Wait indefinitely to keep the application running
+while True:
+    pass
