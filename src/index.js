@@ -16,8 +16,9 @@ root.render(
 );
 
 export default function Home() {
+  const apiKey = process.env.API_KEY
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "",
+    googleMapsApiKey: "apiKey",
   });
 
   if (!isLoaded) return <div>Loading...</div>;
