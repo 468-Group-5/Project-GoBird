@@ -19,3 +19,6 @@ spec:
         image: 
         ports:
         - containerPort: 80
+        env:
+          - name: API_KEY
+            value: ${{ secrets.API_KEY }}
