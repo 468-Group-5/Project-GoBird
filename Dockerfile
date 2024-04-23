@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8080
 
 # Define the command to run the Flask application
-CMD ["python", "go.py"]
+CMD ["python", "goBird.py"]
