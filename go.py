@@ -1,6 +1,7 @@
 import mysql.connector
 import signal
 import sys
+from flask import Flask, jsonify
 
 # Function to handle SIGTERM and SIGINT signals
 def signal_handler(sig, frame):
@@ -34,15 +35,52 @@ result = cursor.fetchall()
 # Print the fetched data
 for row in result:
     print(row)
+    print("Ok so far")
 
 # Close the cursor and database connection
 cursor.close()
 db.close()
 
+# Function to retrieve data from the customer table
+def get_customer_data():
+    # Connect to MySQL database
+    db = mysql.connector.connect(
+        host=mysql_host,
+        user=mysql_user,
+        password=mysql_password,
+        database=mysql_database
+    )
+
+    # Cursor for executing SQL queries
+    cursor = db.cursor()
+
+    # Execute SQL query to retrieve data from the customer table
+    query = "SELECT * FROM customer"
+    cursor.execute(query)
+
+    # Fetch all rows from the result set
+    result = cursor.fetchall()
+
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
+
+    return result
+
+# Create Flask app
+app = Flask(__name__)
+
+# Define a route to return customer data
+@app.route('/customers')
+def customers():
+    # Retrieve data from the customer table
+    customer_data = get_customer_data()
+    return jsonify(customer_data)
+
 # Register signal handler for SIGTERM and SIGINT
 signal.signal(signal.SIGTERM, signal_handler)
 signal.signal(signal.SIGINT, signal_handler)
 
-# Wait indefinitely to keep the application running
-while True:
-    pass
+# Run the Flask app
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
