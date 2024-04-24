@@ -1,7 +1,7 @@
 import mysql.connector
 import signal
 import sys
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 # Function to handle SIGTERM and SIGINT signals
 def signal_handler(sig, frame):
@@ -76,6 +76,16 @@ def customers():
     # Retrieve data from the customer table
     customer_data = get_customer_data()
     return jsonify(customer_data)
+
+# Define an endpoint to receive data from React
+@app.route('/receiveData', methods=['POST'])
+def receiveData():
+    # Get the data sent from React
+    data = request.json
+    print("Received data from React:", data)
+    # Process the data if needed
+    # Return a response if needed
+    return jsonify({'message': 'Data received successfully'})
 
 # Register signal handler for SIGTERM and SIGINT
 signal.signal(signal.SIGTERM, signal_handler)
