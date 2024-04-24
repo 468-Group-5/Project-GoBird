@@ -71,7 +71,7 @@ def get_customer_data():
 app = Flask(__name__)
 
 # Define a route to return customer data
-@app.route('/customers')
+@app.route('/customers', methods=['GET'])
 def customers():
     # Retrieve data from the customer table
     customer_data = get_customer_data()
