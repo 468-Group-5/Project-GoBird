@@ -13,4 +13,4 @@ RUN npm update
 EXPOSE 3000
 
 # 5. Start Command
-CMD [ "npm", "start" ]
+CMD ["sh", "-c", "trap 'echo SIGTERM received' SIGTERM; npm start"]
