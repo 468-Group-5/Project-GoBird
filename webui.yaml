@@ -22,3 +22,16 @@ spec:
         env:
           - name: API_KEY
             value: ${{ secrets.API_KEY }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-service
+spec:
+  type: NodePort
+  ports:
+    - port: 3000  
+      targetPort: 3000  
+      nodePort: 30088 
+  selector:
+    app: react-app
