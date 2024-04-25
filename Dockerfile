@@ -1,12 +1,29 @@
-FROM node:latest
+# 1. Base Image
+FROM node:alpine AS builder
 
-ENV PATH /node_modules/.bin:$PATH
+# 2. Working Directory (for builder stage)
+WORKDIR /app
 
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
+# 3. Copy Package.json and package-lock.json (or yarn.lock)
+COPY package*.json ./
 
+# 4. Install Dependencies
+RUN npm install
 
-COPY /src/ /api.js /
-CMD ["npm", "run", "dev"]
+# 5. Copy Your React App Code
+COPY /src/ /App.js 
+
+# 6. Build Stage (optional, comment out if not needed)
+FROM node:alpine
+
+# 7. Working Directory (for final stage)
+WORKDIR /app
+
+# 8. Copy Production Build of React App (replace 'build' with your output directory)
+COPY src .
+
+# 9. Expose Port (usually 3000 for React apps)
 EXPOSE 3000
+
+# 10. Start Command
+CMD [ "npm", "start" ]
