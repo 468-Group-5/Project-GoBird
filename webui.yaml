@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-app-deployment
+  name: react
   labels:
-    app: react-app
+    app: react
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: react-app
+      app: react
   template:
     metadata:
       labels:
-        app: react-app
+        app: react
     spec:
       containers:
-      - name: react-app
-        image: colesny/webui:latest
+      - name: react
+        image: bxdda/react:latest
         ports:
         - containerPort: 80
         env:
@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: react-app-service
+  name: react
 spec:
   type: NodePort
   ports:
-    - port: 3000  
-      targetPort: 3000  
-      nodePort: 30088 
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30088
   selector:
-    app: react-app
+    app: react
