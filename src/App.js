@@ -175,7 +175,7 @@ function Location() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://10.42.4.25:80/receiveData', { //Backend URL, have to change when IP changes
+      const response = await axios.post('http://flask:80/receiveData', { //Backend URL, have to change when IP changes
         parkingSpace,
         timeEntered,
         timeLeaving,
@@ -193,7 +193,7 @@ function Location() {
   useEffect(() => {
     handleTimeEnteredChange(); // Set initial time entered on component mount
     const fetchData = async () => {
-      const response = await axios.get('http://10.42.4.25:80/customers'); //Backend URL, have to change when IP changes
+      const response = await axios.get('http://flask:80/customers'); //Backend URL, have to change when IP changes
       setParkingData(response.data);
     };
 
