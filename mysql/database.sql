@@ -17,7 +17,12 @@ CREATE TABLE parking (
 );
 
 INSERT INTO spots (spots_number, spots_street, spots_status)
-VALUES ("1", "S Church", "open"), ("2", "S Church", "taken"),("3", "S Church", "taken");
+VALUES ("1", "S Church", "open"), ("2", "S Church", "taken"),("3", "S Church", "taken"),("4", "S Church", "open");
+
+INSERT INTO spots (spots_number, spots_street, spots_status)
+VALUES ("21", "University Ave", "open"), ("22", "University Ave", "taken"),("23", "University Ave", "taken"),("24", "University Ave", "open");
+
+
 
 CREATE USER 'root'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON gobird.* TO 'root'@'%';
