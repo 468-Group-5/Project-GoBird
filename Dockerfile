@@ -5,7 +5,7 @@ FROM node:alpine AS builder
 WORKDIR /app
 
 # 3. Copy Package.json (assuming only one)
-COPY package*.json ./
+COPY *.json ./
 
 # 4. Copy remaining files (excluding package.json)
 COPY . .  
