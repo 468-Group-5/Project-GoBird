@@ -4,14 +4,14 @@ FROM node:alpine AS builder
 # 2. Working Directory (for builder stage)
 WORKDIR /app
 
-# 3. Copy Package.json and package-lock.json (or yarn.lock)
-COPY . .
+# 3. Copy Package.json (assuming only one)
+COPY package*.json ./
 
-# 4. Install Dependencies
-RUN npm install
+# 4. Copy remaining files (excluding package.json)
+COPY . .  
 
 # 5. Copy Your React App Code
-COPY /src/ /App.js 
+COPY src/ . 
 
 # 6. Build Stage (optional, comment out if not needed)
 FROM node:alpine
