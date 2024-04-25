@@ -22,24 +22,6 @@ db = mysql.connector.connect(
     database=mysql_database
 )
 
-# Cursor for executing SQL queries
-cursor = db.cursor()
-
-# Execute SQL query to retrieve data from the customer table
-query = "SELECT * FROM customer"
-cursor.execute(query)
-
-# Fetch all rows from the result set
-result = cursor.fetchall()
-
-# Print the fetched data
-for row in result:
-    print(row)
-    print("Ok so far")
-
-# Close the cursor and database connection
-cursor.close()
-db.close()
 
 # Function to retrieve data from the customer table
 def get_customer_data():
@@ -66,6 +48,14 @@ def get_customer_data():
     db.close()
 
     return result
+    
+#Test customerData
+customerData = get_customer_data()
+
+# Print the fetched data
+for row in customerData:
+    print(row)
+    print("Ok so far")
 
 # Create Flask app
 app = Flask(__name__)
