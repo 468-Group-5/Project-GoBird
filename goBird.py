@@ -24,7 +24,7 @@ db = mysql.connector.connect(
 
 
 # Function to retrieve data from the customer table
-def get_customer_data():
+def get_parking_data():
     # Connect to MySQL database
     db = mysql.connector.connect(
         host=mysql_host,
@@ -36,9 +36,9 @@ def get_customer_data():
     # Cursor for executing SQL queries
     cursor = db.cursor()
 
-    # Execute SQL query to retrieve data from the customer table
-    query = "SELECT * FROM customer"
-    cursor.execute(query)
+    # Execute SQL query to retrieve data from the parking table
+    parkingQuery = "SELECT * FROM parking"
+    cursor.execute(parkingQuery)
 
     # Fetch all rows from the result set
     result = cursor.fetchall()
@@ -49,23 +49,80 @@ def get_customer_data():
 
     return result
     
-#Test customerData
-customerData = get_customer_data()
+# Function to retrieve data from the customer table
+def get_spots_data():
+    # Connect to MySQL database
+    db = mysql.connector.connect(
+        host=mysql_host,
+        user=mysql_user,
+        password=mysql_password,
+        database=mysql_database
+    )
+
+    # Cursor for executing SQL queries
+    cursor = db.cursor()
+
+    # Execute SQL query to retrieve data from the parking table
+    spotsQuery = "SELECT * FROM spots"
+    cursor.execute(spotsQuery)
+
+    # Fetch all rows from the result set
+    result = cursor.fetchall()
+
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
+
+    return result
+
+
+#Test parkingData
+parkingData = get_parking_data()
+
+#Test spotsData
+spotsData = get_spots_data()
+
 
 # Print the fetched data
-for row in customerData:
+for row in parkingData:
+    print("Ok so far, parking data print:")
     print(row)
-    print("Ok so far")
+    print("Complete.")
+
+
+# Print the fetched data
+for row in spotsData:
+    print("Ok so far, spots data print:")
+    print(row)
+    print("Complete.")
+
 
 # Create Flask app
 app = Flask(__name__)
 
-# Define a route to return customer data
-@app.route('/customers', methods=['GET'])
-def customers():
-    # Retrieve data from the customer table
-    customer_data = get_customer_data()
-    return jsonify(customer_data)
+# Define a route to return parking data
+@app.route('/parking', methods=['GET'])
+def parking():
+    # Retrieve data from the parking table
+    parking_data = get_parking_data()
+    return jsonify(parking_data)
+
+# Define a route to return spots data
+@app.route('/spots', methods=['GET'])
+def spots():
+    # Retrieve data from the spots table
+    spots_data = get_spots_data()
+    return jsonify(spots_data)
+
+# Define a route to return spots data
+@app.route('/both', methods=['GET'])
+def both():
+    # Retrieve data from both the parking & spots table
+    parking_data = get_parking_data()
+    spots_data = get_spots_data()
+    both_data = parking_data + spots_data
+    return jsonify(spots_data)
+
 
 # Define an endpoint to receive data from React
 @app.route('/receiveData', methods=['POST'])
