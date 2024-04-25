@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: colesny/gobird-webui:latest
+        image: colesny/webui:latest
         ports:
         - containerPort: 80
         env:
