@@ -19,7 +19,6 @@ CREATE TABLE parking (
 INSERT INTO spots (spots_number, spots_street, spots_status)
 VALUES ("1", "S Church", "open"), ("2", "S Church", "taken"),("3", "S Church", "taken");
 
-
 CREATE USER 'root'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON gobird.* TO 'root'@'%';
 FLUSH PRIVILEGES;
