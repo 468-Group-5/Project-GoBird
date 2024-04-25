@@ -5,7 +5,7 @@ FROM node:alpine AS builder
 WORKDIR /app
 
 # 3. Copy Package.json and package-lock.json (or yarn.lock)
-COPY package*.json ./
+COPY . .
 
 # 4. Install Dependencies
 RUN npm install
@@ -20,7 +20,7 @@ FROM node:alpine
 WORKDIR /app
 
 # 8. Copy Production Build of React App (replace 'build' with your output directory)
-COPY src .
+COPY /src App.js
 
 # 9. Expose Port (usually 3000 for React apps)
 EXPOSE 3000
