@@ -121,7 +121,7 @@ def both():
     parking_data = get_parking_data()
     spots_data = get_spots_data()
     both_data = parking_data + spots_data
-    return jsonify(spots_data)
+    return jsonify(both_data)
 
 
 # Define an endpoint to receive data from React
