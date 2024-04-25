@@ -7,6 +7,7 @@ COPY . /
 
 # 3. Install Dependencies
 RUN npm install
+RUN npm update
 
 # 4. Expose Port (usually 3000 for React apps)
 EXPOSE 3000
