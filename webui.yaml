@@ -18,7 +18,7 @@ spec:
       - name: react
         image: bxdda/react:latest
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         env:
           - name: API_KEY
             value: ${{ secrets.API_KEY }}
@@ -30,8 +30,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 3000
+    - port: 5000
       targetPort: 3000
-      nodePort: 30088
   selector:
     app: react
