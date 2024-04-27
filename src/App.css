@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff; /* Text color for dark background */
+  background-color: #212529; /* Dark background color */
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.map-container {
+  display: flex; /* Optional, if not already set */
+  justify-content: center;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a1a; /* Darker header background */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #fff; /* Text color for header */
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.services-button {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff; /* Text color for buttons */
+  transition: color 0.2s ease;
+}
+
+.services-button:hover {
+  color: #007bff;
+}
+
+/* Main Styles */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.hero {
+  text-align: center;
+  color: #fff; /* Text color for hero section */
+}
+
+.hero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: #eee; /* Lighter text color for better contrast */
+}
+
+.learn-more-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.learn-more-button:hover {
+  background-color: #0069d9;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  padding: 1rem 2rem;
+  background-color: #343a40; /* Darker background for content sections */
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #fff; /* Text color for content sections */
+}
+
+.content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer Styles */
+.footer {
+  padding: 1rem 2rem;
+  text-align: center;
+  background-color: #1a1a1a; /* Dark footer background */
+  color: #fff; /* Text color for footer */
+}
