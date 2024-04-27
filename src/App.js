@@ -13,16 +13,16 @@ function App() {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" style={{ color: 'purple', textDecoration: 'underline'}}>Home</Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/about" style={{ color: 'purple', textDecoration: 'underline'}}>About</Link>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contact" style={{ color: 'purple', textDecoration: 'underline'}}>Contact</Link>
               </li>
               <li>
-                <Link to="/location">Choose Your Spot</Link>
+                <Link to="/location" style={{ color: 'purple', textDecoration: 'underline'}}>Choose Your Spot</Link>
               </li>
             </ul>
           </nav>
@@ -56,7 +56,7 @@ function Home() {
       <p>As users enter a parking area, they will be logged in our system – as they leave, they will be logged out. Using data crowdsourced from each user we can offer near real-time updates to each user on where they can or cannot park while also displaying this information on the Google Maps interface the users are familiar with. </p>
       <h3>Choose your spot now!</h3>
         <div className="location-button-container">
-        <Link to="/location" className="location-button">Choose your parking spot</Link>
+        <Link to="/location" className="location-button" style={{ color: 'purple', textDecoration: 'underline'}}>Choose your parking spot</Link>
       </div>
     </section>
   );
@@ -80,6 +80,7 @@ function Contact() {
       <p>Lieu Phung - lieunphung@gmail.com</p>
       <p>Chaughn Robin - chaughnr@outlook</p>
       <p>Cole Snyder - 20snyderc@gmail.com</p>
+      
     </section>
   );
 }
@@ -201,53 +202,66 @@ function Location() {
   }, []); // Fetch data on component mount
 
   return (
-    <section className="map-container">
-      <h2>Your Location</h2>
-      <Map /> {/* Assuming your Map component is rendered here */}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="parkingSpace">Parking Space Number:</label>
-        <input
-          type="text"
-          id="parkingSpace"
-          value={parkingSpace}
-          onChange={handleParkingSpaceChange}
-        />
-        <label htmlFor="timeEntered">Time Entered:</label>
-        <input
-          type="text" // Change to text for displaying formatted time
-          id="timeEntered"
-          value={timeEntered}
-          disabled // Disable editing since it's auto-populated
-        />
-        <label htmlFor="timeLeaving">Time Leaving (estimated):</label>
-        <input
-          type="text" // Change to text for displaying formatted time (optional)
-          id="timeLeaving"
-          value={timeLeaving}
-          onChange={handleTimeLeavingChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
-
-      {/* Parking Space Table */}
-      {parkingData.length > 0 && (
-        <table>
-          <thead>
-            <tr>
-              <th>Parking Space</th>
-              <th>Estimated Leaving Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {parkingData.map((item) => (
-              <tr key={item.id}> {/* Add a unique key for each row */}
-                <td>{item.parkingSpace}</td>
-                <td>{item.timeLeaving}</td>
+    <section className="location-container">
+      {/* Form section */}
+      <section className="form-section">
+        <div style={{ display: 'flex', alignItems: 'center' }} />
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="parkingSpace">Parking Space Number:</label>
+          <input
+            type="text"
+            id="parkingSpace"
+            value={parkingSpace}
+            onChange={handleParkingSpaceChange}
+          />
+          <label htmlFor="timeEntered">Time Entered:</label>
+          <input
+            type="text"
+            id="timeEntered"
+            value={timeEntered}
+            disabled
+          />
+          <label htmlFor="timeLeaving">Time Leaving (estimated):</label>
+          <input
+            type="text"
+            id="timeLeaving"
+            value={timeLeaving}
+            onChange={handleTimeLeavingChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+  
+      {/* Map section */}
+      <section className="map-section">
+        <h2>Your Location</h2>
+        <div className="map-wrapper">
+          <Map style={{ width: '100%', height: '400px' }} />
+        </div>
+      </section>
+  
+      {/* Parking data table */}
+      <section className="table">
+        {/* Parking Space Table */}
+        {parkingData.length > 0 && (
+          <table>
+            <thead>
+              <tr>
+                <th>Parking Space</th>
+                <th>Estimated Leaving Time</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {parkingData.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.parkingSpace}</td>
+                  <td>{item.timeLeaving}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </section>
     </section>
   );
 }
