@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  color: purple;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -34,4 +38,20 @@ a {
 .combobox-input {
   width: 100%;
   padding: 0.5rem;
+}
+
+.location-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-section,
+.map-section,
+.table {
+  margin: 20px; /* Adjust the margin as needed */
+}
+
+.map-section {
+  width: 100%; /* Ensure the map section takes full width */
 }
