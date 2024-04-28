@@ -1,10 +1,9 @@
 import React, { useMemo, useEffect, useState } from "react";
-import { GoogleMap, useLoadScript, Marker, OverlayView } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, OverlayView, Polyline } from "@react-google-maps/api";
 
 export default function Home() {
-  const apiKey = process.env.API_KEY
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: apiKey,
+    googleMapsApiKey: "AIzaSyDZ8FjkVMCNUp5N_78P69MFv-5Jnv7tbKk",
   });
 
   if (!isLoaded) return <div>Loading...</div>;
@@ -45,7 +44,9 @@ function getLocation(setCenter) {
 
 function Map() {
   const [center, setCenter] = useState(null);
-  const overlayPosition = useMemo(() => ({ lat: 39.9524, lng: -75.5981 }), []);
+  const tempCenter = {lat: 39.95376750670629, lng: -75.59819191979922 }
+  const [universityAveCoordinates, setUniversityAveCoordinates] = useState({lat: 39.95376750670629, lng: -75.59819191979922});
+  const [churchStCoordinates, setChurchStCoordinates] = useState({lat: 39.95376750670629, lng: -75.59819191979922});
 
   const getPixelPositionOffset = (width, height) => ({
     x: -(width / 2),
@@ -56,6 +57,27 @@ function Map() {
     getLocation(setCenter);
   }, []);
 
+  useEffect(() => {
+    // Define the boundary rectangle
+    const coordinates = [
+      { lat: 39.95374540925277, lng: -75.59815293815461 },
+      { lat: 39.95276811189676, lng: -75.60006050998334 }
+      // Add more coordinates as needed to cover the street
+    ];
+    setUniversityAveCoordinates(coordinates);
+  },[]);
+
+  useEffect(() => {
+    // Define the boundary rectangle
+    const coordinates2 = [
+      { lat: 39.954085003791526, lng: -75.6012709618475 },
+      { lat: 39.95087056422614, lng: -75.59849117369313 }
+      // Add more coordinates as needed to cover the street
+    ];
+    setChurchStCoordinates(coordinates2);
+  },[]);
+
+
   if (!center) return <div>Loading...</div>;
 
   return (
@@ -65,18 +87,24 @@ function Map() {
       zoom={18}
       center={center}
     >
-      <Marker position={center} />
-      <OverlayView
-        position={overlayPosition}
-        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-        getPixelPositionOffset={getPixelPositionOffset}
-      >
-        <img
-          src="green.png"
-          alt="Overlay Image"
-          style={{ width: "100px", height: "100px" }} // Adjust the size as needed
-        />
-      </OverlayView>
+      <Marker position={center}/>
+
+      <Polyline
+        path={universityAveCoordinates}
+        options={{
+          strokeColor: "#FF0000", // Red color for the polyline
+          strokeOpacity: 1,
+          strokeWeight: 5, // Adjust the thickness of the polyline
+        }}
+      />
+      <Polyline
+        path={churchStCoordinates}
+        options={{
+          strokeColor: "#00FF00", // Red color for the polyline
+          strokeOpacity: 1,
+          strokeWeight: 5, // Adjust the thickness of the polyline
+        }}
+      />
     </GoogleMap>
   );
 }
