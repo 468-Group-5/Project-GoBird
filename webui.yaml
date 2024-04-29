@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react
-        image: colesny/react:latest
+        image: colsny/react:latest
         ports:
         - containerPort: 3000
         env:
